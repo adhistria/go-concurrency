@@ -1,7 +1,10 @@
 package main
 
-import "fmt"
-
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
 func main() {
 	go boring("it's super boring")
@@ -10,5 +13,8 @@ func main() {
 
 // this function will not be called because the main thread is main exit first
 func boring(msg string) {
-	fmt.Println(msg)	
+	for i := 0; ; i++ {
+		fmt.Println(msg, i)
+		time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
+	}
 }
