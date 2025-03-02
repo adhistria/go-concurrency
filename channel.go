@@ -6,6 +6,11 @@ import (
 	"time"
 )
 
+// channel is a way to communicate between goroutines, 1 channel will have 2 goroutines
+// 1 goroutine will send data to the channel, 1 goroutine will receive data from the channel
+// channel is a blocking operation, if the channel is empty, the receiver will be blocked until the sender sends data to the channel
+// if the channel is full, the sender will be blocked until the receiver receives data from the channel
+
 func main() {
 	c := make(chan string)
 	go boringWithChannel("boring", c)
