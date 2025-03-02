@@ -22,7 +22,7 @@ func main() {
 	fmt.Println("I'm leaving")
 }
 
-func boringReturnChannel(msg string) <-chan string {
+func BoringReturnChannel(msg string) <-chan string {
 	c := make(chan string)
 	go func() {
 		for i := 0; ; i++ {
