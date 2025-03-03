@@ -12,6 +12,7 @@ func main() {
 		fmt.Println(<-c)
 	}
 	quit <- true
+	// receive the quit channel before exit for synchronization
 	fmt.Printf("receive quit channel %v", <-quit)
 }
 
