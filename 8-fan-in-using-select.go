@@ -6,10 +6,6 @@ import (
 	"time"
 )
 
-// fan in pattern is a pattern that will merge multiple channels into 1 channel
-// the caller will receive data from the merged channel
-// the merged channel will receive data from multiple channels
-// it will run asynchronusly
 func main() {
 	c := fanIn(boring("Joe"), boring("Ann"))
 	for i := 0; i < 10; i++ {
@@ -31,6 +27,7 @@ func boring(msg string) <-chan string {
 
 func fanIn(input1, input2 <-chan string) <-chan string {
 	c := make(chan string)
+	// use one goroutine to listen to multiple channels with select method
 	go func() {
 		for {
 			select {
